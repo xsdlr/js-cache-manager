@@ -4,48 +4,46 @@ import assign from 'lodash-es/assign';
 import adaptors from './adaptor/index';
 
 export default class JSCache {
-    _ttl = {};
-    static adaptors = adaptors;
+  _ttl = {};
+  static adaptors = adaptors;
 
-    constructor(options) {
-        this.options = assign(defaultOptions, options);
-    }
+  constructor(options = {}) {
+    this.options = assign(defaultOptions, options);
+    const { adaptor } = this.options;
+    this.adaptor = new adaptor();
+  }
 
-    get(key, options) {
-        const promise = Promise.resolve();
-        const expire = this._ttl[key];
-        if (expire === 0 || Date.now() > expire) {
-            const { adaptor } = this.options;
-            return promise.then(() => adaptor.get(key, options));
-        } else {
-            return promise;
-        }
+  get(key, options = {}) {
+    const expire = this._ttl[key];
+    if (expire === 0 || Date.now() <= expire) {
+      return Promise.resolve().then(() => this.adaptor.get(key, options));
+    } else {
+      delete this._ttl[key];
+      return Promise.resolve().then(() => this.adaptor.remove(key, options)).then(() => {});
     }
+  }
 
-    set(key, value, options) {
-        const { ttl = this.options.ttl } = options;
-        this._ttl[key] = _expire(ttl);
-        const { adaptor } = this.options;
-        return Promise.resolve().then(() => adaptor.set(key, value, options));
-    }
+  set(key, value, options = {}) {
+    const { ttl = this.options.ttl } = options;
+    this._ttl[key] = this._expire(ttl);
+    return Promise.resolve().then(() => this.adaptor.set(key, value, options));
+  }
 
-    remove(key, options) {
-        const { adaptor } = this.options;
-        const expire = this._ttl[key];
-        delete this._ttl[key];
-        return Promise.resolve().then(() => adaptor.remove(key, options));
-    }
+  remove(key, options = {}) {
+    const expire = this._ttl[key];
+    delete this._ttl[key];
+    return Promise.resolve().then(() => this.adaptor.remove(key, options));
+  }
 
-    clear(options) {
-        const { adaptor } = this.options;
-        this._ttl = {};
-        return Promise.resolve().then(() => adaptor.clear(options));
-    }
+  clear(options = {}) {
+    this._ttl = {};
+    return Promise.resolve().then(() => this.adaptor.clear(options));
+  }
 
-    _expire(ttl) {
-        if (!isNumber(ttl) || !ttl) {
-            return 0;
-        }
-        return Date.now() + ttl;
+  _expire(ttl) {
+    if (!isNumber(ttl) || !ttl) {
+      return 0;
     }
+    return Date.now() + ttl;
+  }
 }

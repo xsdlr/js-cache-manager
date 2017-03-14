@@ -4,7 +4,7 @@
   "description": "Fast and sample js cache module",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -23,10 +23,20 @@
     "lodash-es": "^4.17.4"
   },
   "devDependencies": {
+    "babel-jest": "^19.0.0",
+    "babel-plugin-transform-async-to-generator": "^6.22.0",
+    "babel-polyfill": "^6.23.0",
     "babel-preset-latest": "^6.24.0",
     "babel-preset-stage-0": "^6.22.0",
+    "jest": "^19.0.2",
+    "jest-cli": "^19.0.2",
     "rollup": "^0.41.5",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-node-resolve": "^2.0.0"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "/!node_modules\\/lodash-es/"
+    ]
   }
 }

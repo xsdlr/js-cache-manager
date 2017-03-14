@@ -1,5 +1,5 @@
 import memoryCacheAdaptor from './memory';
 
 export default {
-    memory: memoryCacheAdaptor,
+  memory: memoryCacheAdaptor,
 };
