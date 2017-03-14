@@ -1,0 +1,32 @@
+{
+  "name": "js-cache-manager",
+  "version": "0.0.1",
+  "description": "Fast and sample js cache module",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xsdlr/js-cache-manager.git"
+  },
+  "keywords": [
+    "cache"
+  ],
+  "author": "xsdlr",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xsdlr/js-cache-manager/issues"
+  },
+  "homepage": "https://github.com/xsdlr/js-cache-manager#readme",
+  "dependencies": {
+    "lodash-es": "^4.17.4"
+  },
+  "devDependencies": {
+    "babel-preset-latest": "^6.24.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "rollup": "^0.41.5",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-node-resolve": "^2.0.0"
+  }
+}
