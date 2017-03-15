@@ -1,7 +1,16 @@
 {
-  "presets": [
-    "es2015",
-    "stage-0"
-  ],
-  "plugins": ["transform-async-to-generator"]
+  "env": {
+    "build": {
+      "presets": [[
+        "stage-2",
+      ]],
+      "plugins": ["external-helpers"]
+    },
+    "test": {
+      "presets": [
+        "es2015",
+        "stage-2"
+      ]
+    }
+  }
 }
