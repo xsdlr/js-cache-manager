@@ -2,7 +2,8 @@
   "name": "js-cache-manager",
   "version": "0.0.1",
   "description": "Fast and sample js cache module",
-  "main": "src/index.js",
+  "main": "dist/js-cache-manager.umd.js",
+  "unpkg": "dist/js-cache-manager.umd.js",
   "scripts": {
     "build": "BABEL_ENV=build rollup -c",
     "test": "BABEL_ENV=test jest"

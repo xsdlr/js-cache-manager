@@ -11,8 +11,8 @@ export default {
   ],
   moduleName: 'js-cache-manager',
   targets: [
-    { dest: 'dist/bundle.cjs.js', format: 'cjs' },
-    { dest: 'dist/bundle.umd.js', format: 'umd' },
-    { dest: 'dist/bundle.es.js', format: 'es' },
+    { dest: 'dist/js-cache-manager.cjs.js', format: 'cjs' },
+    { dest: 'dist/js-cache-manager.umd.js', format: 'umd' },
+    { dest: 'dist/js-cache-manager.es.js', format: 'es' },
   ]
 };
