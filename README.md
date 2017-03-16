@@ -1,5 +1,7 @@
 # js-cache-manager
 Fast and sample js cache module
+
+[![Travis branch](https://img.shields.io/travis/rust-lang/rust/master.svg?style=flat-square)](https://travis-ci.org/xsdlr/js-cache-manager)[![npm (scoped)](https://img.shields.io/npm/v/@cycle/core.svg?style=flat-square)](https://www.npmjs.com/package/js-cache-manager)
  
 # install
 ```javascript
