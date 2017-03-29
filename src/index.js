@@ -6,6 +6,7 @@ import adaptors from './adaptor/index';
 export default class JSCache {
   _ttl = {};
   static adaptors = adaptors;
+  static version = '__VERSION__';
 
   constructor(options = {}) {
     this.options = assign(defaultOptions, options);

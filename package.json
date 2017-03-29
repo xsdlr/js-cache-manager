@@ -2,10 +2,16 @@
   "name": "js-cache-manager",
   "version": "0.0.1",
   "description": "Fast and sample js cache module",
-  "main": "dist/js-cache-manager.umd.js",
-  "unpkg": "dist/js-cache-manager.umd.js",
+  "main": "dist/js-cache-manager.min.js",
+  "module": "dist/js-cache-manager.esm.js",
+  "unpkg": "dist",
+  "files": [
+    "src",
+    "dist/*.js"
+  ],
   "scripts": {
-    "build": "BABEL_ENV=build rollup -c",
+    "prepublish": "npm run build",
+    "build": "BABEL_ENV=build node build/build",
     "test": "BABEL_ENV=test jest"
   },
   "repository": {
@@ -34,7 +40,12 @@
     "jest-cli": "^19.0.2",
     "rollup": "^0.41.5",
     "rollup-plugin-babel": "^2.7.1",
-    "rollup-plugin-node-resolve": "^2.0.0"
+    "rollup-plugin-filesize": "^1.2.1",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-progress": "^0.2.1",
+    "rollup-plugin-replace": "^1.1.1",
+    "rollup-plugin-uglify": "^1.0.1",
+    "uglify-js-harmony": "^2.7.5"
   },
   "jest": {
     "transformIgnorePatterns": [
