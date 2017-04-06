@@ -1,4 +1,5 @@
 const path = require('path');
+const flow = require('rollup-plugin-flow-no-whitespace');
 const babel = require('rollup-plugin-babel');
 const resolve = require('rollup-plugin-node-resolve');
 const replace = require('rollup-plugin-replace');
@@ -64,8 +65,11 @@ function genConfig(opts) {
       replace({
         __VERSION__: version
       }),
+      flow(),
       resolve(),
       babel({
+        plugins: ['external-helpers'],
+        externalHelpers: true,
         exclude: 'node_modules/**'
       }),
       progress(),

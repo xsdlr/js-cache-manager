@@ -1,15 +1,16 @@
 {
+  "presets": [[
+    "stage-2",
+  ]],
   "env": {
-    "build": {
-      "presets": [[
-        "stage-2",
-      ]],
-      "plugins": ["external-helpers"]
-    },
     "test": {
       "presets": [
         "es2015",
         "stage-2"
+      ],
+      "plugins": [
+        "babel-plugin-syntax-flow", 
+        "babel-plugin-transform-flow-strip-types"
       ]
     }
   }
